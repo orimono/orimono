@@ -1,0 +1,9 @@
+go.work.sum
+
+# 子仓目录（各自独立 git 仓）
+ito/
+loom/
+shutter/
+osa/
+tsumu/
+nuno/

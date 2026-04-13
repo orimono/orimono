@@ -27,7 +27,7 @@ down:
 	docker compose down
 
 build:
-	go build ./loom/... ./shutter/... ./tsumu/...
+	go build ./loom/... ./shutter/... ./tsumu/... ./osa/...
 
 restart-%:
 	overmind restart $*

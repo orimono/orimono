@@ -19,11 +19,16 @@ CREATE TABLE IF NOT EXISTS telemetry (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE IF NOT EXIST node_executors (
+CREATE TABLE IF NOT EXISTS node_executors (
+    id          BIGSERIAL    PRIMARY KEY,
     node_id     TEXT         NOT NULL,
-    executors   JSONB        NOT NULL DEFAULT '[]',
+    kind        TEXT         NOT NULL,
+    executor    JSONB        NOT NULL DEFAULT '{}',
     created_at  TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
-    updated_at  TIMESTAMPTZ  NULLABLE
-)
+    updated_at  TIMESTAMPTZ,
+    UNIQUE (node_id, kind)
+);
+
+CREATE INDEX IF NOT EXISTS idx_node_executors_node_id ON node_executors (node_id);
 
 CREATE INDEX IF NOT EXISTS idx_telemetry_node_type_ts ON telemetry (node_id, type, ts DESC);

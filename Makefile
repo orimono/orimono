@@ -1,7 +1,7 @@
 .PHONY: infra infra-down up down build init-config
 
 init-config:
-	@for svc in loom shutter tsumu; do \
+	@for svc in loom shutter tsumu osa; do \
 		cfg="$$svc/cmd/config.json"; \
 		tpl="$$svc/cmd/config.json.template"; \
 		if [ ! -f "$$cfg" ] && [ -f "$$tpl" ]; then \
